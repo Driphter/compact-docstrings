@@ -2,22 +2,22 @@
  Compact docstrings in Emacs
 =============================
 
-Shrink blank lines in docstrings and doc comments
+Shrink blank lines in lisp forms
 
-.. image:: etc/compact-docstrings.png
+.. image:: etc/compact-lisp.png
 
 Setup
 =====
 
-Enable locally with ``compact-docstrings-mode``::
+Enable locally with ``compact-lisp-mode``::
 
-  (add-hook 'some-mode-hook #'compact-docstrings-mode)
+  (add-hook 'some-mode-hook #'compact-lisp-mode)
 
-Enable globally (in all programming modes) with ``global-compact-docstrings-mode``::
+Enable globally (in all programming modes) with ``global-compact-lisp-mode``::
 
-  (add-hook 'after-init-hook #'global-compact-docstrings-mode)
+  (add-hook 'after-init-hook #'global-compact-lisp-mode)
 
 Customization
 =============
 
-Enable compaction of all comments and strings by setting ``compact-docstrings-only-doc-blocks`` to ``nil``.  Change the compact line height by customizing ``compact-docstrings-face``.
+None yet.
