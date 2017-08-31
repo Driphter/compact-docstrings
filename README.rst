@@ -1,5 +1,5 @@
 =============================
- Compact docstrings in Emacs
+ Compact lisp forms in Emacs
 =============================
 
 Shrink blank lines in lisp forms
