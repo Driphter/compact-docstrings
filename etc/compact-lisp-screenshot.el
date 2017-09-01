@@ -1,4 +1,4 @@
-;;; compact-docstrings-screenshot.el --- Make a screenshot of compact-docstrings
+;;; compact-lisp-screenshot.el --- Make a screenshot of compact-lisp
 
 ;; Copyright (C) 2016  Free Software Foundation, Inc.
 
@@ -43,7 +43,7 @@
   (setq-default cursor-type 'bar
                 split-width-threshold 80
                 truncate-partial-width-windows t
-                frame-title-format (format "Compact docstrings @ Emacs %s" emacs-version)
+                frame-title-format (format "Compact lisp @ Emacs %s" emacs-version)
                 x-gtk-use-system-tooltips nil)
   (load-theme 'tango t)
   ;; (set-face-attribute 'tooltip nil :height 60)
@@ -59,15 +59,15 @@
 (defun cds-load-package ()
   "Load package."
   (package-initialize)
-  (load-library "compact-docstrings"))
+  (load-library "compact-lisp"))
 
 (defun cds-load-example ()
   "Prepare files and layout windows."
-  (find-file "etc/before.py")
-  (setq buffer-name "Regular docstrings")
-  (find-file-other-window "after.py")
-  (setq buffer-name "Compact docstrings")
-  (compact-docstrings-mode))
+  (find-file "etc/before.clj")
+  (setq buffer-name "Regular lisp")
+  (find-file-other-window "after.clj")
+  (setq buffer-name "Compact lisp")
+  (compact-lisp-mode))
 
 (defun cds-prepare-screenshot-1 ()
   "Prepare for taking a screenshot."
@@ -78,14 +78,15 @@
 
 (defun cds-save-screenshot ()
   "Save screenshot of current frame."
-  (let ((fname (expand-file-name "compact-docstrings.png" cds-script-dir)))
+  (let ((fname (expand-file-name "compact-lisp.png" cds-script-dir)))
     (process-lines "import" "-window" (frame-parameter nil 'outer-window-id)
                    fname)
     (process-lines "mogrify" "-strip" "-matte"
                    "-bordercolor" (face-attribute 'fringe :background)
                    "-border" (format "0x%d" cds-fringe-width) fname)
     (process-lines "optipng" "-o3" fname))
-  (kill-emacs))
+  ;(kill-emacs)
+  )
 
 (defun cds-take-screenshot ()
   (cds-prepare-screenshot-1)
@@ -95,5 +96,5 @@
 (print default-directory)
 (run-with-idle-timer 0 nil #'cds-take-screenshot)
 
-(provide 'compact-docstrings-screenshot)
-;; compact-docstrings-screenshot.el ends here
+(provide 'compact-lisp-screenshot)
+;; compact-lisp-screenshot.el ends here
